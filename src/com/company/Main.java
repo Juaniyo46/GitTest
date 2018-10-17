@@ -19,8 +19,8 @@ public class Main {
 
 
     }*/
-   public static  void display (String variable) {
-       System.out.println(variable);
+   public static  void display(String variable, int num1, int num2, int result) {
+       System.out.printf(variable, num1, num2, result);
    }
 
    public static int resta (int res1, int res2) {
@@ -37,6 +37,11 @@ public class Main {
    }
 
 
+   public static int sum (int sum1, int sum2) {
+       return sum1+sum2;
+   }
+
+
    public static void main(String[] args) {
 
        Scanner scanner = new Scanner(System.in);
@@ -45,15 +50,30 @@ public class Main {
        System.out.println("Introduzca el segundo número para las operaciones");
        int num2 = scanner.nextInt();
 
-       int resultres = resta(num1,num2);
-       String totalResta= String.valueOf(resultres);
-       display("El resultado de restar 5 - 6 es "+ totalResta);
-       int resultmult = mult(num1,num2);
-       String totalMult = String.valueOf(resultmult);
-       display("El resultado de multiplicar 5 * 6 es "+totalMult);
-       int resuldiv = div(num1,num2);
-       String totalDiv = String.valueOf(resuldiv);
-       display("El resultado de dividir 5/6 es " + totalDiv);
+       System.out.println("¿Que operación quiere realizar?(introduzca solo el simbolo de la operacion)");
+       char operacion = scanner.next().charAt(0);
+
+
+       if (operacion=='-') {
+           int resultres = resta(num1,num2);
+           display("El resultado de restar %d - %d es %d", num1,num2, resultres);
+       }
+       else if (operacion=='+') {
+           int resultsum = sum(num1,num2);
+           display("El resultado de sumar %d + %d es %d", num1,num2, resultsum);
+       }
+       else if (operacion=='*') {
+           int resultmult = mult(num1,num2);
+           display("El resultado de multiplicar %d * %d es %d", num1,num2,resultmult);
+       }
+       else if (operacion=='/') {
+           int resultdiv = div(num1,num2);
+           display("El resultado de dividir %d / %d es %d",num1,num2,resultdiv);
+       }
+       else {
+           System.out.println("La operación solicitada no existe en nustra base de datos. Lamentamos las molestias.");
+       }
+
 
    }
 
